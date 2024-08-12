@@ -5,12 +5,11 @@ import Header from "@/components/AnimeList/header";
 const Page = async () => {
   // SERVER COMPONENT
   // melakukan fetching data di env
-  const responseTopAnime = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=12`
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime`
   );
-  
 
-  const topAnime = await responseTopAnime.json();
+  const topAnime = await response.json();
 
   return (
     <div>
@@ -19,20 +18,11 @@ const Page = async () => {
       <section>
         <Header
           title={"Top Anime"}
-          linkHref="/TopAnime"
+          linkHref="/top/anime"
           linkTitle={"See More"}
         />
         <AnimeList api={topAnime} />
       </section>
-      {/* Anime News */}
-      <section>
-        <Header
-          title={"Anime News"}
-          linkHref="/news"
-          linkTitle={"See More"}
-        />
-        <AnimeList api={topAnime} />
-      </section>  
     </div>
   );
 };
