@@ -3,10 +3,10 @@ import Link from "next/link";
 const AnimeList = ({ api }) => {
   return (
     <div className="grid md:grid-cols-6 sm:grid-cols-3 grid-cols-2 mt-5 mx-5 gap-10">
-      {api.data.map((anime) => {
+      {api.data?.map((anime) => {
         return (
           <div key={anime.mal_id} className="shadow-xl">
-          <Link href={`/${anime.mal_id}`} className="cursor-pointer">
+          <Link href={`/anime/${anime.mal_id}`} className="cursor-pointer">
             <Image
               src={anime.images.webp.image_url}
               width={350}
