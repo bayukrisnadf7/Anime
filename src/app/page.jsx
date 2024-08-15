@@ -1,17 +1,10 @@
 import AnimeList from "@/components/AnimeList";
 import Navbar from "@/components/Utilities/Navbar";
 import Header from "@/components/AnimeList/header";
+import { getAnimeResponse } from "@/app/libs/api-libs";
 
 const Page = async () => {
-  // SERVER COMPONENT
-  // melakukan fetching data di env
-  const responseTopAnime = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=12`
-  );
-  
-
-  const topAnime = await responseTopAnime.json();
-
+  const topAnime = await getAnimeResponse("top/anime", "limit=12");
   return (
     <div>
       <Navbar />
@@ -25,14 +18,14 @@ const Page = async () => {
         <AnimeList api={topAnime} />
       </section>
       {/* Anime News */}
-      <section>
+      {/* <section>
         <Header
           title={"Anime News"}
           linkHref="/news"
           linkTitle={"See More"}
         />
         <AnimeList api={topAnime} />
-      </section>  
+      </section>   */}
     </div>
   );
 };
