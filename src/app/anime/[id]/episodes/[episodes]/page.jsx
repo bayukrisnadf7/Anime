@@ -1,4 +1,4 @@
-import { getAnimeResponse } from "@/app/libs/api-libs";
+import { getAnimeResponse } from "@/libs/api-libs";
 import Navbar from "@/components/Utilities/Navbar";
 const episodeAnime = async ({ params }) => {
   const { id, episodes } = params;
