@@ -4,7 +4,7 @@ import Navbar from "@/components/Utilities/Navbar";
 import HeaderMenu from "@/components/Utilities/HeaderMenu";
 import { useEffect, useState } from "react";
 import Pagination from "@/components/Utilities/Pagination";
-import { getAnimeResponse } from "../libs/api-libs";
+import { getAnimeResponse } from "../../libs/api-libs";
 
 const Page = () => {
   const [page, setPage] = useState(1);

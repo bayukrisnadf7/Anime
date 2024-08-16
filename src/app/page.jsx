@@ -1,10 +1,16 @@
 import AnimeList from "@/components/AnimeList";
 import Navbar from "@/components/Utilities/Navbar";
 import Header from "@/components/AnimeList/header";
-import { getAnimeResponse } from "@/app/libs/api-libs";
+import { getAnimeResponse, getNestedAnimeResponse, reproduce } from "@/libs/api-libs";
+
+// Function to shuffle an array
+
 
 const Page = async () => {
   const topAnime = await getAnimeResponse("top/anime", "limit=12");
+  let recomendationAnime = await getNestedAnimeResponse("recommendations/anime", "entry");
+  recomendationAnime = reproduce(recomendationAnime, 6);
+
   return (
     <div>
       <Navbar />
@@ -17,15 +23,14 @@ const Page = async () => {
         />
         <AnimeList api={topAnime} />
       </section>
-      {/* Anime News */}
-      {/* <section>
+      {/* Recommendation Anime */}
+      <section>
         <Header
-          title={"Anime News"}
+          title={"Recommendation Anime"}
           linkHref="/news"
-          linkTitle={"See More"}
         />
-        <AnimeList api={topAnime} />
-      </section>   */}
+        <AnimeList api={recomendationAnime} />
+      </section>  
     </div>
   );
 };
