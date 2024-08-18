@@ -19,10 +19,10 @@ const InputSearch = () => {
         <input
           type="text"
           placeholder="Search anime ..."
-          className="md:p-2 p-2 mt-2 rounded"
+          className="md:p-2 p-1 rounded"
           ref={searchRef}
         />
-        <button onClick={handleSearch} className="absolute top-3.5 right-0">
+        <button onClick={handleSearch} className="absolute top-1.5 right-0">
           <MagnifyingGlass size={30} />
         </button>
       </div>
