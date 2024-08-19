@@ -10,6 +10,7 @@ import TopAnime from "@/components/TopAnime";
 import HeaderTopAnime from "@/components/TopAnime/header";
 import FooterTopAnime from "@/components/TopAnime/footer";
 import AnimeGenre from "@/components/AnimeGenre";
+import Seasons from "@/components/Schedules";
 
 // Function to shuffle an array
 
@@ -26,19 +27,28 @@ const Page = async () => {
   recomendationAnime = reproduce(recomendationAnime, 6);
   // genre anime
   const genreAnime = await getAnimeResponse("genres/anime");
+  // schedule
+  const season = await getAnimeResponse("schedules", "limit=9");
 
   return (
     <>
       <Navbar />
-      <div className="flex justify-center mt-5 mx-5">
-        <div className="border-2 shadow-2xl w-1/6 h-max rounded">
-          <HeaderTopAnime
-            title={"Top Anime"}
-          />
+      <div className="flex md:flex-row flex-col justify-center mt-5 mx-2">
+        <div className="border-2 shadow-xl md:w-1/6 w-max h-max rounded-2xl mb-5">
+          <HeaderTopAnime title={"Top Anime"} />
           <TopAnime api={topAnime} />
           <FooterTopAnime />
         </div>
-        <div className="flex flex-col w-2/3 mx-5 p-5 border-2 shadow-xl rounded mb-5">
+        <div className="flex flex-col md:w-2/3 mx-3 p-5 border-2 shadow-xl rounded-2xl mb-5">
+          {/* Recommendation Anime */}
+          <section>
+            <Header
+              title={"Recommendation anime"}
+              linkHref="/recomendations"
+              linkTitle={"View all"}
+            />
+            <AnimeList api={recomendationAnime} />
+          </section>
           {/* Anime Top */}
           <section className="">
             <Header
@@ -48,18 +58,14 @@ const Page = async () => {
             />
             <AnimeList api={anime} />
           </section>
-          {/* Recommendation Anime */}
-          <section>
-            <Header
-              title={"Recommendation Anime"}
-              linkHref="/recomendations"
-              linkTitle={"See More"}
-            />
-            <AnimeList api={recomendationAnime} />
-          </section>
         </div>
-        <div className="border-2 shadow-2xl w-1/4 h-max rounded">
-          <AnimeGenre api={genreAnime} />
+        <div className="md:w-1/3">
+          <div className="border-2 shadow-sm h-max rounded-2xl">
+            <Seasons api={season} />
+          </div>
+          <div className="border-2 shadow-sm h-max rounded-2xl mt-5">
+            <AnimeGenre api={genreAnime} />
+          </div>
         </div>
       </div>
     </>
