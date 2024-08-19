@@ -22,7 +22,7 @@ const InputSearch = () => {
           className="md:p-2 p-1 rounded"
           ref={searchRef}
         />
-        <button onClick={handleSearch} className="absolute top-1.5 right-0">
+        <button onClick={handleSearch} className="absolute md:top-1.5 md:right-0 right-0 top-1">
           <MagnifyingGlass size={30} />
         </button>
       </div>
