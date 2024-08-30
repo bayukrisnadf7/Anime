@@ -15,9 +15,7 @@ const Seasons = ({ api }) => {
                 className="justify-between border mx-1 p-1 rounded-md"
               >
                 <Link href={`/anime/${data.mal_id}`} className="cursor-pointer">
-                  <h3 className="text-sm font-semibold w-full">
-                    {data.title}
-                  </h3>
+                  <h3 className="text-sm font-semibold w-full">{data.title}</h3>
                 </Link>
               </div>
             </>

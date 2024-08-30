@@ -3,18 +3,19 @@ import Link from "next/link";
 const AnimeList = ({ api }) => {
   return (
     <div className="grid md:grid-cols-6 sm:grid-cols-3 grid-cols-2 mt-5 gap-1">
-      {api.data?.map((anime) => {
+      {api.data?.map((data) => {
         return (
-          <div key={anime.mal_id} className="shadow-xl p-1 rounded-md">
-          <Link href={`/anime/${anime.mal_id}`} className="cursor-pointer">
+          <div key={data.mal_id} className="shadow-xl p-1 rounded-md">
+          <Link href={`/anime/${data.mal_id}`} className="cursor-pointer">
             <Image
-              src={anime.images.webp.image_url}
-              width={350}
-              height={350}
-              alt={anime.title}
+              src={data.images.webp.image_url}
+              width={450}
+              height={450}
+              alt={data.title}
               className="w-full max-h-36 object-cover"
+              priority={false}
             />
-            <h3 className="font-bold md:text-sm text-md">{anime.title}</h3>
+            <h3 className="font-bold md:text-sm text-md">{data.title}</h3>
           </Link>
         </div>
         );
