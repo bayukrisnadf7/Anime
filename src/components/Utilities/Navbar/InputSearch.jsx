@@ -7,7 +7,6 @@ import { MagnifyingGlass } from "@phosphor-icons/react";
 const InputSearch = () => {
   const searchRef = useRef();
   const router = useRouter();
-
   const handleSearch = (event) => {
     event.preventDefault();
     const keyword = searchRef.current.value;
@@ -19,11 +18,11 @@ const InputSearch = () => {
         <input
           type="text"
           placeholder="Search anime ..."
-          className="md:p-2 p-1 rounded"
+          className="md:p-1 p-1 rounded-xl outline-none"
           ref={searchRef}
         />
-        <button onClick={handleSearch} className="absolute md:top-1.5 md:right-0 right-0 top-1">
-          <MagnifyingGlass size={30} />
+        <button onClick={handleSearch} className="absolute md:top-1.5 md:right-1 right-0 top-1">
+          <MagnifyingGlass size={20} />
         </button>
       </div>
     </form>

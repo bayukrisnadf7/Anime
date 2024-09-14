@@ -2,17 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 const AnimeList = ({ api }) => {
   return (
-    <div className="grid md:grid-cols-6 sm:grid-cols-3 grid-cols-2 mt-5 gap-1">
+    <div className="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 mt-5 gap-3">
       {api.data?.map((data) => {
         return (
-          <div key={data.mal_id} className="shadow-xl p-1 rounded-md">
+          <div key={data.mal_id} className="bg-color-secondary shadow-lg p-1 rounded-md">
           <Link href={`/anime/${data.mal_id}`} className="cursor-pointer">
             <Image
               src={data.images.webp.image_url}
               width={450}
               height={450}
               alt={data.title}
-              className="w-full max-h-36 object-cover"
+              className="w-full max-h-36 object-cover rounded-md"
               priority={false}
             />
             <h3 className="font-bold md:text-sm text-md">{data.title}</h3>
