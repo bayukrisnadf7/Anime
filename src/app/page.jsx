@@ -16,9 +16,9 @@ import Seasons from "@/components/Schedules";
 
 const Page = async () => {
   // top anime
-  const topAnime = await getAnimeResponse("top/anime", "limit=5");
+  const topAnime = await getAnimeResponse("top/anime", "limit=4");
   // anime
-  const anime = await getAnimeResponse("anime", "limit=24");
+  const anime = await getAnimeResponse("anime", "limit=10");
   // rekomendation with random after reset page
   let recomendationAnime = await getNestedAnimeResponse(
     "recommendations/anime",
@@ -33,13 +33,23 @@ const Page = async () => {
   return (
     <>
       <Navbar />
-      <div className="flex md:flex-row flex-col justify-center mt-5 mx-2">
-        <div className="border-2 shadow-xl md:w-1/6 w-max h-max rounded-2xl mb-5">
+      <div className="flex md:flex-row flex-col mx-2 justify-center">
+        <div className="shadow md:w-1/6 h-max rounded-2xl mb-5 mt-5">
           <HeaderTopAnime title={"Top Anime"} />
           <TopAnime api={topAnime} />
           <FooterTopAnime />
         </div>
-        <div className="flex flex-col md:w-2/3 mx-3 p-5 border-2 shadow-xl rounded-2xl mb-5">
+        <div className="flex flex-col md:w-2/3 mx-3 p-5 rounded-2xl mb-5">
+          
+          {/* Animes */}
+          <section className="">
+            <Header
+              title={"Latest release"}
+              linkHref="/animes"
+              linkTitle={"View all"}
+            />
+            <AnimeList api={anime} />
+          </section>
           {/* Recommendation Anime */}
           <section>
             <Header
@@ -49,24 +59,15 @@ const Page = async () => {
             />
             <AnimeList api={recomendationAnime} />
           </section>
-          {/* Anime Top */}
-          <section className="">
-            <Header
-              title={"Latest release"}
-              linkHref="/populer"
-              linkTitle={"View all"}
-            />
-            <AnimeList api={anime} />
-          </section>
         </div>
-        <div className="md:w-1/3">
+        {/* <div className="md:w-1/3">
           <div className="border-2 shadow-sm h-max rounded-2xl">
             <Seasons api={season} />
           </div>
           <div className="border-2 shadow-sm h-max rounded-2xl mt-5">
             <AnimeGenre api={genreAnime} />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
